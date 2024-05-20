@@ -29,9 +29,9 @@ const checkUsernameAndEmail = async (username, email) => {
 
 const createUser = async (userData) => {
     return prisma.users.create({
-        data: userData
-    })
-}
+        data: userData,
+    });
+};
 module.exports = {
-    checkUsernameAndEmail, createUser
-}
+    checkUsernameAndEmail, createUser,
+};

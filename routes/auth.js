@@ -1,8 +1,8 @@
-const authRouter = require('express').Router();
+const authRouter = require("express").Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const { checkUsernameAndEmail }  = require("../db/users")
+const { checkUsernameAndEmail, createUser }  = require("../db/users");
 
 //path ---> /auth/register
 authRouter.post('/register', async (req, res) => {
@@ -17,7 +17,7 @@ authRouter.post('/register', async (req, res) => {
         return res.status(409).send({ message: "Username or Email aready taken." });
     }
     // hash the password
-    const hashedPassword = await bcrypt.hash(user.password, parseInt(process.env.SALT || 5 )
+    const hashedPassword = await bcrypt.hash(user.password, parseInt(process.env.SALT || 5)
     );
     //1st add users to database
     const newUser = await createUser(user)
