@@ -4,7 +4,10 @@
   "description": "API for water my plants application",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "seed": "node prisma/seed.js",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
   },
   "author": "Alex Peters",
   "license": "ISC",

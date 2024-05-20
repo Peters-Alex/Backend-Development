@@ -14,20 +14,21 @@ datasource db {
 }
 
 model users {
-  user_id Int @id @defalut(autoincrement())
+  user_id Int @id @default(autoincrement())
   username String @unique
   Password String
   first_name String?
   last_name String?
   email String? @unique
+  plants plants[]
 }
 
 model plants {
-  plant_id Int  @id @defalut(autoincrement())
+  plant_id Int  @id @default(autoincrement())
   species String
   water_frequency String
   nickname String
   plant_image String
   user_id Int
-  user users @relation{fields:[user_id], references:[user_id]}
+  user users @relation(fields: [user_id], references: [user_id])
 }
